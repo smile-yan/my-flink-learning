@@ -47,3 +47,17 @@ System.out.println("age == "+age);
 
 Tuple类是一个抽象类，总共有26个实现类(Tuple0~Tuple25)。
 
+### 3. CentOS下安装flink
+
+版本：Apache Flink 1.7.2 with Hadoop 2.4 for Scala 2.11 
+
+下载地址：https://flink.apache.org/downloads.html
+
+下载文件，解压到任意路径。
+
+配置maven环境后，下载官网提供的项目。
+
+```bash
+curl https://flink.apache.org/q/quickstart.sh | bash
+```
+
