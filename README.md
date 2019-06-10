@@ -49,11 +49,27 @@ Tuple类是一个抽象类，总共有26个实现类(Tuple0~Tuple25)。
 
 ### 3. CentOS下安装flink
 
-版本：Apache Flink 1.7.2 with Hadoop 2.4 for Scala 2.11 
+版本：Apache Flink 1.8.0 with Hadoop 2.4 for Scala 2.11 
 
 下载地址：https://flink.apache.org/downloads.html
 
+运行环境：java 1.8+
+
 下载文件，解压到任意路径。
+
+本地启动：
+
+```bash
+## 跳转到指定文件
+cd flink-1.8.0/bin
+./start-scala-shell.sh local
+```
+
+启动成功后，访问默认的8081端口即可。例如：http://withyan.cn:8081/
+
+
+
+### 4.下载官网例子
 
 配置maven环境后，下载官网提供的项目。
 
