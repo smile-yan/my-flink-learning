@@ -4,7 +4,6 @@ import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
 
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.Properties;
 
@@ -31,8 +30,9 @@ public class Consumer {
         consumer.subscribe(Collections.singletonList("my-topic"));
         while (true) {
             ConsumerRecords<String, String> records = consumer.poll(100);
-            for (ConsumerRecord<String, String> record : records)
+            for (ConsumerRecord<String, String> record : records) {
                 System.out.printf("offset = %d, key = %s, value = %s%n", record.offset(), record.key(), record.value());
+            }
         }
 
     }

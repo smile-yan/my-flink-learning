@@ -9,7 +9,7 @@ import java.util.Properties;
  * @author smileyan
  */
 public class MyProducer {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         Properties props = new Properties();
         props.put("bootstrap.servers", "192.168.112.128:9092");
         props.put("acks", "all");
@@ -20,8 +20,9 @@ public class MyProducer {
         props.put("key.serializer", "org.apache.kafka.common.serialization.StringSerializer");
         props.put("value.serializer", "org.apache.kafka.common.serialization.StringSerializer");
         KafkaProducer<String, String> kafkaProducer = new KafkaProducer<String, String>(props);
-        for (int i = 255; i < 265; i++) {
+        for (int i = 300; i < 400; i++) {
             kafkaProducer.send(new ProducerRecord<String, String>("my-topic", Integer.toString(i), Integer.toString(i)));
+            Thread.sleep(500);
         }
         kafkaProducer.close();
     }
