@@ -19,12 +19,10 @@ public class Consumer {
         props.put("group.id", "my-topic");
         // 自动提交offset
         props.put("enable.auto.commit", "true");
-        //
         props.put("auto.commit.interval.ms", "1000");
         props.put("key.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
         props.put("value.deserializer", "org.apache.kafka.common.serialization.StringDeserializer");
         KafkaConsumer<String, String> consumer = new KafkaConsumer<String, String>(props);
-
         // 订阅，指定topic,单个使用 Collections.singletonList("my-topic")
         // 可以指定多个 topic, Arrays.asList("foo", "bar")
         consumer.subscribe(Collections.singletonList("my-topic"));

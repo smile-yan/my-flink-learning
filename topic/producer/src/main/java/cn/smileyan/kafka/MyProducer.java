@@ -1,8 +1,11 @@
 package cn.smileyan.kafka;
 
+import com.alibaba.fastjson.JSONObject;
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerRecord;
 
+import java.text.DateFormat;
+import java.util.Date;
 import java.util.Properties;
 
 /**
@@ -20,10 +23,19 @@ public class MyProducer {
         props.put("key.serializer", "org.apache.kafka.common.serialization.StringSerializer");
         props.put("value.serializer", "org.apache.kafka.common.serialization.StringSerializer");
         KafkaProducer<String, String> kafkaProducer = new KafkaProducer<String, String>(props);
-        for (int i = 300; i < 400; i++) {
-            kafkaProducer.send(new ProducerRecord<String, String>("my-topic", Integer.toString(i), Integer.toString(i)));
-            Thread.sleep(500);
+        int i=0;
+        while(i<Integer.MAX_VALUE) {
+            JSONObject json = new JSONObject();
+            json.put("num",i);
+            DateFormat dateFormat = DateFormat.getDateTimeInstance();
+            json.put("date",dateFormat.format(new Date()));
+            kafkaProducer.send(new ProducerRecord<String, String>("my-topic", Integer.toString(i), json.toString()));
+
+            System.out.println("Sending data: "+json.toString());
+            Thread.sleep(1000);
+            i++;
         }
+
         kafkaProducer.close();
     }
 

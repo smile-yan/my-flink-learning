@@ -11,6 +11,7 @@
     <modules>
         <module>consumer</module>
         <module>producer</module>
+        <module>flink</module>
     </modules>
     <dependencies>
         <dependency>
